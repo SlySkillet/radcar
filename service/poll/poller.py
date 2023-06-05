@@ -20,9 +20,10 @@ def poll(repeat=True):
         try:
             # Write your polling logic, here
             # Do not copy entire file
-            response = requests.get("http://localhost:8100/api/automobiles/")
+            response = requests.get("http://project-beta-inventory-api-1:8000/api/automobiles")
             content = json.loads(response.content)
-            for automobile in content["automobiles"]:
+            print("content:", content)
+            for automobile in content["autos"]:
                 AutomobileVO.objects.update_or_create(
                     vin=automobile["vin"],
                     defaults={"sold": automobile["sold"]}
