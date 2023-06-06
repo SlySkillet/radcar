@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-function ModelForm() {
+function ModelsForm() {
     const [name, setName] = useState('')
     const [pictureUrl, setPictureUrl] = useState('')
     const [manufacturer, setManufacturer] = useState('')
@@ -103,5 +103,5 @@ function ModelForm() {
     )
 }
 
-export default ModelForm
+export default ModelsForm
 
