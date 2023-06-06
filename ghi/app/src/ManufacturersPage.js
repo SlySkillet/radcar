@@ -8,14 +8,10 @@ function ManufacturersPage(props){
             const response = await fetch('http://localhost:8100/api/manufacturers/');
             if (response.ok){
                 const data = await response.json();
-                // console.log("data ==>", data)
-                // console.log("data.manufacturers ==>", data.manufacturers)
                 setManufacturers(data.manufacturers);
-                console.log("manufacturers ==>", manufacturers)
             }
         }
         loadManufacturers()
-        console.log(manufacturers)
     }, [])
     return (
         <div className="px-4 py-5 my-5 text-center">
