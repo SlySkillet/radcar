@@ -184,7 +184,11 @@ def api_sale(request, id):
         )
     else:
         if request.method == "DELETE":
-            count, _ = Sale.objects.filter(id=id).delete()
-            return JsonResponse({"deleted": count > 0})
+            sale = Sale.objects.get(id=id)
+            sale.delete()
+            return JsonResponse(
+                sale,
+                encoder=CustomerEncoder,
+                safe=False
+            )
         
-            
