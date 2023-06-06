@@ -83,18 +83,17 @@ def list_appointments(request):
             technician_id = content["technician"]
             technician = Technician.objects.get(id=technician_id)
             content["technician"] = technician
+            appointment = Appointment.objects.create(**content)
+            return JsonResponse(
+                appointment,
+                encoder=AppointmentListEncoder,
+                safe=False,
+            )
         except Technician.DoesNotExist:
             return JsonResponse(
                 {"message": "invalid technician id"},
                 status=400,
             )
-
-        appointment = Appointment.objects.create(**content)
-        return JsonResponse(
-            appointment,
-            encoder=AppointmentListEncoder,
-            safe=False,
-        )
 
 
 @require_http_methods(["DELETE", "GET"])
@@ -107,10 +106,17 @@ def detail_appointment(request, id):
             safe=False,
         )
     elif request.method == "DELETE":
-        count, _ = Appointment.objects.filter(id=id).delete()
-        return JsonResponse(
-            {"deleted": count > 0}
-        )
+        try:
+            appointment = Appointment.objects.get(id=id)
+            count, _ = appointment.delete()
+            return JsonResponse(
+                {"deleted": count > 0}
+            )
+        except Appointment.DoesNotExist:
+            return JsonResponse(
+                {"message": "unknown appointment"},
+                status=400,
+            )
 
 
 @require_http_methods(["PUT"])
