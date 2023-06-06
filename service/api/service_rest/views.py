@@ -111,3 +111,46 @@ def detail_appointment(request, id):
         return JsonResponse(
             {"deleted": count > 0}
         )
+
+
+@require_http_methods(["PUT"])
+def cancel_appointment(request, id):
+    if request.method == "PUT":
+        try:
+            content = {"status": "canceled"}
+            appointment = Appointment.objects.get(id=id)
+
+            prop = "status"
+            setattr(appointment, prop, content[prop])
+            appointment.save()
+            return JsonResponse(
+                appointment,
+                encoder=AppointmentListEncoder,
+                safe=False,
+            )
+
+        except Appointment.DoesNotExist:
+            response = JsonResponse({"message": "appointment does not exist"})
+            response.status_code = 404
+            return response
+
+
+@require_http_methods(["PUT"])
+def finish_appointment(request, id):
+    if request.method == "PUT":
+        try:
+            content = {"status": "finished"}
+            appointment = Appointment.objects.get(id=id)
+
+            prop = "status"
+            setattr(appointment, prop, content[prop])
+            appointment.save()
+            return JsonResponse(
+                appointment,
+                encoder=AppointmentListEncoder,
+                safe=False
+            )
+        except Appointment.DoesNotExist:
+            response = JsonResponse({"message": "appointment does not exist"})
+            response.status_code = 404
+            return response
