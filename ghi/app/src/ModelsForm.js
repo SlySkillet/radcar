@@ -42,7 +42,7 @@ function ModelsForm() {
 
         data.picture_url = pictureUrl
         data.name = name
-        data.manufacturer = manufacturer
+        data.manufacturer_id = manufacturer
 
         const modelsUrl = "http://localhost:8100/api/models/"
 
