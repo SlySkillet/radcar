@@ -18,11 +18,8 @@ def poll(repeat=True):
     while True:
         print('Service poller polling for data')
         try:
-            # Write your polling logic, here
-            # Do not copy entire file
             response = requests.get("http://project-beta-inventory-api-1:8000/api/automobiles")
             content = json.loads(response.content)
-            print("content:", content)
             for automobile in content["autos"]:
                 AutomobileVO.objects.update_or_create(
                     vin=automobile["vin"],
