@@ -1,39 +1,44 @@
 import React, { useState, useEffect } from "react"
 
-function AutomobilesForm() {
-    const [color, setColor] = useState('')
-    const [year, setYear] = useState('')
-    const [vin, setVin] = useState('')
-    const [model, setModel] = useState('')
-    const [models, setModels] = useState([])
+function SalesForm() {
+    const [automobile, setAutomobile] = useState('')
+    const [automobiles, setAutomobiles] = useState([])
+    const [salesperson, setSalesperson] = useState('')
+    const [salespeople, setSalespeople] = useState([])
+    const [customer, setCustomer] = useState('')
+    const [customers, setCustomers] = useState([])
+    const [price, setPrice] = useState('')
 
-    const handleColorChange = (event) => {
+
+    const handleAutomobileChange = (event) => {
         const value = event.target.value
-        setColor(value)
+        setAutomobile(value)
     }
 
-    const handleYearChange = (event) => {
+    const handleSalespersonChange = (event) => {
         const value = event.target.value
-        setYear(value)
+        setSalesperson(value)
     }
 
-    const handleVinChange = (event) => {
+    const handleCustomerChange = (event) => {
         const value = event.target.value
-        setVin(value)
+        setCustomer(value)
     }
 
-    const handleModelChange = (event) => {
+    const handlePriceChange = (event) => {
         const value = event.target.value
-        setModel(value)
+        setPrice(value)
     }
 
     const fetchData = async () => {
-        const modelUrl = "http://localhost:8100/api/models/"
-
-        const response = await fetch(modelUrl)
+        const salesurls = "http://localhost:8090/api/sales/"
+        
+        const response = await fetch(salesurls)
         if (response.ok) {
             const data = await response.json()
-            setModels(data.models)
+            setAutomobiles(data.automobiles)
+            setSalespeople(data.salespeople)
+            setCustomers(data.customers)
         }
     }
 
@@ -43,13 +48,12 @@ function AutomobilesForm() {
 
         const data = {}
 
-        data.color = color
-        data.year = year
-        data.vin = vin
-        data.model_id = model
+        data.automobile = automobile
+        data.salesperson = salesperson
+        data.customer = customer
+        data.price = price
 
-        const automobilesUrl = "http://localhost:8100/api/automobiles/"
-
+        const url = "http://localhost:8090/api/sales/"
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -57,15 +61,15 @@ function AutomobilesForm() {
                 'Content-Type': 'application/json',
             },
         }
-        const response = await fetch(automobilesUrl, fetchConfig)
+        const response = await fetch(url, fetchConfig)
         if (response.ok) {
-            const newModel = await response.json()
-            console.log(newModel)
+            const newSale = await response.json()
+            console.log(newSale)
 
-            setColor('')
-            setYear('')
-            setVin('')
-            setModel('')
+            setAutomobile('')
+            setSalesperson('')
+            setCustomer('')
+            setPrice('')
 
         }
     }
@@ -79,31 +83,48 @@ function AutomobilesForm() {
         <div className="row">
             <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
-                    <h1>Add an automobile</h1>
-                    <form onSubmit={handleSubmit} id="create-automobiles-form">
-                        <div className="form-floating mb-3">
-                            <input onChange={handleColorChange} value={color} placeholder="Color" required type="text" name="color" id="color" className="form-control" />
-                            <label htmlFor="color">Color</label>
-                        </div>
-                        <div className="form-floating mb-3">
-                            <input onChange={handleYearChange} value={year} placeholder="Year" required type="text" name="year" id="year" className="form-control" />
-                            <label htmlFor="year">Year</label>
-                        </div>
-                        <div className="form-floating mb-3">
-                            <input onChange={handleVinChange} value={vin} placeholder="vin" required type="text" name="vin" id="vin" className="form-control" />
-                            <label htmlFor="vin">VIN</label>
-                        </div>
+                    <h1>Record a new sale</h1>
+                    <form onSubmit={handleSubmit} id="create-sale-form">
                         <div className="mb-3">
-                            <select onChange={handleModelChange} value={model} required id="model" name="model" className="form-select">
-                                <option value="">Choose a model</option>
-                                {models.map(model => {
+                            <select onChange={handleAutomobileChange} value={automobile} required id="automobile" name="automobile" className="form-select">
+                                <option value="">Choose an automobile VIN.</option>
+                                {automobiles.map(automobile => {
+                                    if (automobile.sold===false)
                                     return (
-                                        <option key={model.id} value={model.id}>
-                                            {model.name}
+                                        <option key={automobile.vin} value={automobile.vin}>
+                                            {automobile.vin}
                                         </option>
                                     )
                                 })}
                             </select>
+                        </div>
+                        <div className="mb-3">
+                            <select onChange={handleSalespersonChange} value={salesperson} required id="salesperson" name="salesperson" className="form-select">
+                                <option value="">Choose a salesperson.</option>
+                                {salespeople.map(salesperson => {
+                                    return (
+                                        <option key={salesperson.id} value={salesperson.id}>
+                                            {salesperson.last_name}
+                                        </option>
+                                    )
+                                })}
+                            </select>
+                        </div>
+                        <div className="mb-3">
+                            <select onChange={handleCustomerChange} value={customer} required id="customer" name="customer" className="form-select">
+                                <option value="">Choose a customer.</option>
+                                {customers.map(customer => {
+                                    return (
+                                        <option key={customer.id} value={customer.id}>
+                                            {customer.last_name}
+                                        </option>
+                                    )
+                                })}
+                            </select>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <input onChange={handlePriceChange} value={price} placeholder="price" required type="number" name="price" id="price" className="form-control" />
+                            <label htmlFor="price">Price</label>
                         </div>
                         <button className="btn btn-primary">Add!</button>
                     </form>
@@ -113,4 +134,4 @@ function AutomobilesForm() {
     )
 }
 
-export default AutomobilesForm
+export default SalesForm

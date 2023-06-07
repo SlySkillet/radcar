@@ -22,8 +22,6 @@ function ModelsForm() {
     }
 
 
-
-
     const fetchData = async () => {
         const Url = "http://localhost:8100/api/manufacturers/"
 

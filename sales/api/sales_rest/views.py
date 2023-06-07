@@ -51,6 +51,10 @@ class SaleEncoder(ModelEncoder):
         "customer": CustomerEncoder(),
     }
 
+    def get_extra_data(self, o):
+        return {"automobile": o.automobile.vin}
+
+
 
 @require_http_methods(["GET", "POST"])
 def api_salespeople(request):
@@ -150,33 +154,53 @@ def api_sales(request):
             {"sales": sales},
             encoder=SaleEncoder,
         )
-    else:
+    if request.method == "POST":
         content = json.loads(request.body)
+        try:
+            automobile_vin = content["automobile"]
+            automobile = AutomobileVO.objects.get(vin=automobile_vin)
+            if automobile.sold is False:
+                content["automobile"] = automobile
 
-        automobile = AutomobileVO.objects.get(vin=content["automobile"])
-        content["automobile"] = automobile
+                salesperson_ln = content["salesperson"]
+                salesperson = Salesperson.objects.get(last_name=salesperson_ln)
+                content["salesperson"] = salesperson
+            
+                customer_ln = content["customer"]
+                customer = Customer.objects.get(last_name=customer_ln)
+                content["customer"] = customer
 
-        salesperson = Salesperson.objects.get(last_name=content["salesperson"])
-        content["salesperson"] = salesperson
-        
-        customer = Customer.objects.get(last_name=content["customer"])
-        content["customer"] = customer
+                automobile.sold = True
+                automobile.save()
 
-        automobile.sold = True
-        automobile.save()
-
-        sales = Sale.objects.create(**content)
-        return JsonResponse(
-            sales,
-            encoder=SaleEncoder,
-            safe=False,
-        )
+                completed_sales = Sale.objects.create(**content)
+                return JsonResponse(
+                    completed_sales,
+                    encoder=SaleEncoder,
+                    safe=False,
+                )
+            else:
+                response = JsonResponse({"message": "We sold it already!"})
+            response.status_code = 400
+            return response
+        except:
+            return JsonResponse(
+                {"message": "Sorry! No longer available."},
+                status=500
+            )
 
 
 @require_http_methods(["GET", "DELETE"])
 def api_sale(request, id):
-    if request.method == "GET":
+
+    try:
         sale = Sale.objects.get(id=id)
+    except Sale.DoesNotExist:
+        return JsonResponse(
+            {"message": "No sale id"},
+            status=400
+        )
+    if request.method == "GET":
         return JsonResponse(
             {"sale": sale},
             encoder=SaleEncoder,
@@ -188,7 +212,7 @@ def api_sale(request, id):
             sale.delete()
             return JsonResponse(
                 sale,
-                encoder=CustomerEncoder,
-                safe=False
+                encoder=SaleEncoder,
+                safe=False,
             )
-        
+            

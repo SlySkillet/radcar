@@ -18,6 +18,14 @@ function AutomobilesPage(props){
         }
         loadAutomobiles()
     }, [])
+
+    function soldOrNot(vin) {
+        for (let auto of automobiles) {
+            if (vin === auto["vin"] && auto["sold"] === true) {
+                return "Yes"
+            }
+        } return "No"
+    }
     return(
         <div className="px-4 py-5 my-5 text-center">
         <h1 className="display-5 fw-bold">Automobiles</h1>
@@ -41,7 +49,7 @@ function AutomobilesPage(props){
                             <td>{automobile.year}</td>
                             <td>{automobile.model.manufacturer.name}</td>
                             <td>{automobile.model.name}</td>
-                            <td>{automobile.sold}</td>
+                            <td>{soldOrNot(automobile.vin)}</td>
                         </tr>
                     )
                 })}
