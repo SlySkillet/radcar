@@ -24,6 +24,7 @@ function AppointmentsPage(props){
         if (response.ok) {
             const updateStatus = await response.json();
             console.log(updateStatus);
+            window.location.reload()
         //     console.log("appointments =>", appointments)
 
         //     const updatedData = appointments.filter((appointment) => appointment.status === "scheduled");
@@ -44,8 +45,9 @@ function AppointmentsPage(props){
         const response = await fetch(finishUrl, fetchConfig);
         const updateStatus = await response.json();
         console.log(updateStatus);
-        const updatedData = appointments.filter((appointment) => appointment.status === "scheduled");
-        setAppointments(updatedData);
+        window.location.reload();
+        // const updatedData = appointments.filter((appointment) => appointment.status === "scheduled");
+        // setAppointments(updatedData);
     }
 
     return(
