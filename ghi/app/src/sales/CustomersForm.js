@@ -1,109 +1,84 @@
-import React, { useState, useEffect } from "react"
+import React, {useState} from "react"
 
-function AutomobilesForm() {
-    const [color, setColor] = useState('')
-    const [year, setYear] = useState('')
-    const [vin, setVin] = useState('')
-    const [model, setModel] = useState('')
-    const [models, setModels] = useState([])
+function CustomersForm() {
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState('')
+    const [address, setAddress] = useState('')
 
-    const handleColorChange = (event) => {
+    const handleFirstNameChange = (event) => {
         const value = event.target.value
-        setColor(value)
+        setFirstName(value)
     }
 
-    const handleYearChange = (event) => {
+    const handleLastNameChange = (event) => {
         const value = event.target.value
-        setYear(value)
+        setLastName(value)
     }
 
-    const handleVinChange = (event) => {
+    const handlePhoneNumberChange = (event) => {
         const value = event.target.value
-        setVin(value)
+        setPhoneNumber(value)
     }
 
-    const handleModelChange = (event) => {
+    const handleAddressChange = (event) => {
         const value = event.target.value
-        setModel(value)
+        setAddress(value)
     }
-
-    const fetchData = async () => {
-        const modelUrl = "http://localhost:8100/api/models/"
-
-        const response = await fetch(modelUrl)
-        if (response.ok) {
-            const data = await response.json()
-            setModels(data.models)
-        }
-    }
-
 
     const handleSubmit = async (event) => {
         event.preventDefault()
 
         const data = {}
 
-        data.color = color
-        data.year = year
-        data.vin = vin
-        data.model_id = model
+        data.first_name = firstName
+        data.last_name = lastName
+        data.phone_number = phoneNumber
+        data.address = address
+        console.log(data)
 
-        const automobilesUrl = "http://localhost:8100/api/automobiles/"
-
+        const url = "http://localhost:8090/api/customers/"
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
         }
-        const response = await fetch(automobilesUrl, fetchConfig)
+        const response = await fetch(url, fetchConfig)
         if (response.ok) {
-            const newModel = await response.json()
-            console.log(newModel)
+            const newCustomer = await response.json()
+            console.log(newCustomer)
 
-            setColor('')
-            setYear('')
-            setVin('')
-            setModel('')
+            setFirstName('')
+            setLastName('')
+            setPhoneNumber('')
+            setAddress('')
 
         }
     }
-
-    useEffect(() => {
-        fetchData()
-    }, [])
-
 
     return (
         <div className="row">
             <div className="offset-3 col-6">
                 <div className="shadow p-4 mt-4">
-                    <h1>Add an automobile</h1>
-                    <form onSubmit={handleSubmit} id="create-automobiles-form">
+                    <h1>Add a Customer</h1>
+                    <form onSubmit={handleSubmit} id="create-customer-form">
                         <div className="form-floating mb-3">
-                            <input onChange={handleColorChange} value={color} placeholder="Color" required type="text" name="color" id="color" className="form-control" />
-                            <label htmlFor="color">Color</label>
+                            <input onChange={handleFirstNameChange} value={firstName} placeholder="First Name" required type="text" name="first_name" id="first_name" className="form-control" />
+                            <label htmlFor="first_name">First name...</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input onChange={handleYearChange} value={year} placeholder="Year" required type="text" name="year" id="year" className="form-control" />
-                            <label htmlFor="year">Year</label>
+                            <input onChange={handleLastNameChange} value={lastName} placeholder="Last Name" required type="text" name="last_name" id="last_name" className="form-control" />
+                            <label htmlFor="last_name">Last name...</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input onChange={handleVinChange} value={vin} placeholder="vin" required type="text" name="vin" id="vin" className="form-control" />
-                            <label htmlFor="vin">VIN</label>
+                            <input onChange={handlePhoneNumberChange} value={phoneNumber} placeholder="Phone Number" required type="text" name="phone_number" id="phone_number" className="form-control" />
+                            <label htmlFor="phone_number">Phone number...</label>
                         </div>
-                        <div className="mb-3">
-                            <select onChange={handleModelChange} value={model} required id="model" name="model" className="form-select">
-                                <option value="">Choose a model</option>
-                                {models.map(model => {
-                                    return (
-                                        <option key={model.id} value={model.id}>
-                                            {model.name}
-                                        </option>
-                                    )
-                                })}
-                            </select>
+                        <div className="form-floating mb-3">
+                            <input onChange={handleAddressChange} value={address} placeholder="Address" required type="text" name="address" id="address" className="form-control" />
+                            <label htmlFor="address">Address...</label>
                         </div>
                         <button className="btn btn-primary">Add!</button>
                     </form>
@@ -113,4 +88,4 @@ function AutomobilesForm() {
     )
 }
 
-export default AutomobilesForm
+export default CustomersForm
