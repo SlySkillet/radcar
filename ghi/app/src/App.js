@@ -8,6 +8,8 @@ import ManufacturersForm from './ManufacturersForm';
 import AutomobilesPage from './AutomobilesPage'
 // import AutomobilesForm from './AutomobilesForm'
 
+import TechniciansPage from './services/TechniciansPage';
+
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +23,7 @@ function App() {
           {/* <Route path="/models/create" element={<ModelsForm />} /> */}
           <Route path="/automobiles" element={<AutomobilesPage />} />
           {/* <Route path="/automobiles/create" element={<AutomobilesForm />} /> */}
+          <Route path="/technicians" element={<TechniciansPage />} />
         </Routes>
       </div>
     </BrowserRouter>

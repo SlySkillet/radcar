@@ -9,14 +9,15 @@ function AutomobilesPage(props){
             const response = await fetch('http://localhost:8100/api/automobiles/');
             if (response.ok){
                 const data = await response.json();
-                console.log("data ==>", data)
+                // console.log("data ==>", data)
                 setAutomobiles(data.autos)
-                console.log("automobiles ==>", automobiles)
+                // console.log("automobiles ==>", automobiles)
             } else {
                 console.error(response)
             }
         }
         loadAutomobiles()
+        // console.log("automobiles 2nd call ==>", automobiles)
     }, [])
     return(
         <div className="px-4 py-5 my-5 text-center">
