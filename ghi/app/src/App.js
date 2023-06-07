@@ -10,6 +10,7 @@ import AutomobilesPage from './AutomobilesPage'
 
 import TechniciansPage from './services/TechniciansPage';
 import TechniciansForm from './services/TechnicansForm';
+import AppointmentsPage from './services/AppointmentsPage';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           {/* <Route path="/automobiles/create" element={<AutomobilesForm />} /> */}
           <Route path="/technicians" element={<TechniciansPage />} />
           <Route path="/technicians/create" element={<TechniciansForm />} />
+          <Route path="/appointments" element={<AppointmentsPage />} />
         </Routes>
       </div>
     </BrowserRouter>
