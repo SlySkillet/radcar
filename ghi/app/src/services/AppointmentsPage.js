@@ -8,8 +8,8 @@ function AppointmentsPage(props){
             const response = await fetch ('http://localhost:8080/api/appointments/');
             if (response.ok){
                 const data = await response.json();
-                // const displayData = data.appointments.filter((appointment) => appointment.status === "scheduled")
-                setAppointments(data.appointments)
+                const displayData = data.appointments.filter((appointment) => appointment.status === "scheduled")
+                setAppointments(displayData)
             }
         }
         loadAppointments();
@@ -64,21 +64,20 @@ function AppointmentsPage(props){
                 </thead>
                 <tbody>
                     {appointments.map(appointment => {
-                        if (appointment.status === "scheduled"){
-                            return(
-                                <tr key={appointment.id}>
-                                    <td>{appointment.vin}</td>
-                                    <td>{appointment.customer}</td>
-                                    <td>{new Date(appointment.date_time).toLocaleString()}</td>
-                                    <td>{appointment.technician.first_name} {appointment.technician.last_name}</td>
-                                    <td>{appointment.reason}</td>
-                                    <td>
-                                        <button onClick={(event) => handleCancel(appointment.id, event)} className="btn btn-warning mx-3" >Cancel</button>
-                                        <button onClick={(event) => handleFinish(appointment.id, event)} className="btn btn-primary">Finish</button>
-                                    </td>
-                                </tr>
-                            )
-                        }
+
+                        return(
+                            <tr key={appointment.id}>
+                                <td>{appointment.vin}</td>
+                                <td>{appointment.customer}</td>
+                                <td>{new Date(appointment.date_time).toLocaleString()}</td>
+                                <td>{appointment.technician.first_name} {appointment.technician.last_name}</td>
+                                <td>{appointment.reason}</td>
+                                <td>
+                                    <button onClick={(event) => handleCancel(appointment.id, event)} className="btn btn-warning mx-3" >Cancel</button>
+                                    <button onClick={(event) => handleFinish(appointment.id, event)} className="btn btn-primary">Finish</button>
+                                </td>
+                            </tr>
+                        )
                     })
 
                     }
