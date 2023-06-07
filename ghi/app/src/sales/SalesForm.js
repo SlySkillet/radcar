@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react"
 
 function SalesForm() {
     const [automobile, setAutomobile] = useState('')
-    const [automobiles, setAutomobiles] = useState([])
-    const [salesperson, setSalesperson] = useState('')
-    const [salespeople, setSalespeople] = useState([])
-    const [customer, setCustomer] = useState('')
-    const [customers, setCustomers] = useState([])
+    const [sales, setSales] = useState([])
+    // const [salesperson, setSalesperson] = useState('')
+    // // const [salespeople, setSalespeople] = useState([])
+    // const [customer, setCustomer] = useState('')
+    // const [customers, setCustomers] = useState([])
     const [price, setPrice] = useState('')
 
 
@@ -15,15 +15,15 @@ function SalesForm() {
         setAutomobile(value)
     }
 
-    const handleSalespersonChange = (event) => {
-        const value = event.target.value
-        setSalesperson(value)
-    }
+    // const handleSalespersonChange = (event) => {
+    //     const value = event.target.value
+    //     setSalesperson(value)
+    // }
 
-    const handleCustomerChange = (event) => {
-        const value = event.target.value
-        setCustomer(value)
-    }
+    // const handleCustomerChange = (event) => {
+    //     const value = event.target.value
+    //     setCustomer(value)
+    // }
 
     const handlePriceChange = (event) => {
         const value = event.target.value
@@ -31,14 +31,12 @@ function SalesForm() {
     }
 
     const fetchData = async () => {
-        const salesurls = "http://localhost:8090/api/sales/"
+        const urls = "http://localhost:8090/api/sales"
         
-        const response = await fetch(salesurls)
+        const response = await fetch(urls)
         if (response.ok) {
             const data = await response.json()
-            setAutomobiles(data.automobiles)
-            setSalespeople(data.salespeople)
-            setCustomers(data.customers)
+            setSales(data.sales)
         }
     }
 
@@ -49,8 +47,8 @@ function SalesForm() {
         const data = {}
 
         data.automobile = automobile
-        data.salesperson = salesperson
-        data.customer = customer
+        // data.salesperson = salesperson
+        // data.customer = customer
         data.price = price
 
         const url = "http://localhost:8090/api/sales/"
@@ -67,8 +65,8 @@ function SalesForm() {
             console.log(newSale)
 
             setAutomobile('')
-            setSalesperson('')
-            setCustomer('')
+            // setSalesperson('')
+            // setCustomer('')
             setPrice('')
 
         }
@@ -88,17 +86,17 @@ function SalesForm() {
                         <div className="mb-3">
                             <select onChange={handleAutomobileChange} value={automobile} required id="automobile" name="automobile" className="form-select">
                                 <option value="">Choose an automobile VIN.</option>
-                                {automobiles.map(automobile => {
-                                    if (automobile.sold===false)
+                                {sales.map(sale => {
+                                    // if (automobile.sold===false)
                                     return (
-                                        <option key={automobile.vin} value={automobile.vin}>
-                                            {automobile.vin}
+                                        <option key={sale.automobile} value={sale.automobile}>
+                                            {sale.automobile}
                                         </option>
                                     )
                                 })}
                             </select>
                         </div>
-                        <div className="mb-3">
+                        {/* <div className="mb-3">
                             <select onChange={handleSalespersonChange} value={salesperson} required id="salesperson" name="salesperson" className="form-select">
                                 <option value="">Choose a salesperson.</option>
                                 {salespeople.map(salesperson => {
@@ -121,7 +119,7 @@ function SalesForm() {
                                     )
                                 })}
                             </select>
-                        </div>
+                        </div> */}
                         <div className="form-floating mb-3">
                             <input onChange={handlePriceChange} value={price} placeholder="price" required type="number" name="price" id="price" className="form-control" />
                             <label htmlFor="price">Price</label>

@@ -7,8 +7,12 @@ import ModelsPage from './ModelsPage'
 import ModelsForm from './ModelsForm'
 import AutomobilesPage from './AutomobilesPage'
 import AutomobilesForm from './AutomobilesForm'
-// import SalesPage from './sales/SalesPage'
+import SalesPage from './sales/SalesPage'
 import SalesForm from './sales/SalesForm'
+// import SalesPeoplePage from './sales/SalesPeoplePage'
+import SalesPeopleForm from './sales/SalesPeopleForm'
+import CustomersPage from './sales/CustomersPage'
+// import CustomersForm from '.sales/CustomersForm'
 
 function App() {
   return (
@@ -23,8 +27,12 @@ function App() {
           <Route path="/models/create" element={<ModelsForm />} />
           <Route path="/automobiles" element={<AutomobilesPage />} />
           <Route path="/automobiles/create" element={<AutomobilesForm />} />
-          {/* <Route path="/sales" element={<SalesPage />} /> */}
+          <Route path="/sales" element={<SalesPage />} />
           <Route path="/sales/create" element={<SalesForm />} />
+          {/* <Route path="/salespeople/create" element={<SalesPeoplePage />} /> */}
+          <Route path="/salespeople/create" element={<SalesPeopleForm />} />
+          <Route path="/customers" element={<CustomersPage />} />
+          {/* <Route path="/customers/create" element={<CustomersForm />} /> */}
         </Routes>
       </div>
     </BrowserRouter>
