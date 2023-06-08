@@ -79,19 +79,19 @@ class Sale(models.Model):
 #     automobile = models.ForeignKey(
 #         AutomobileVO,
 #         related_name="auto_sale",
-#         on_delete=models.CASCADE
+#         on_delete=models.PROTECT
 #     )
 
 #     salesperson = models.ForeignKey(
 #         Salesperson,
 #         related_name="salesperson_sale",
-#         on_delete=models.CASCADE
+#         on_delete=models.PROTECT
 #     )
 
 #     customer = models.ForeignKey(
 #         Customer,
 #         related_name="customer_sale",
-#         on_delete=models.CASCADE
+#         on_delete=models.PROTECT
 #     )
 
 #     def __str__(self):

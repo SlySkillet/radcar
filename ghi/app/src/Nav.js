@@ -10,6 +10,39 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="manufacturers/">Manufacturers</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="manufacturers/create">Make a Manufacturer</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="models/">Models</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="models/create">Make a Model</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="automobiles/">Automobiles</NavLink>
+            </li>  
+            <li className="nav-item">
+              <NavLink className="nav-link" to="automobiles/create">Add an Automobile</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="customers/">Customers</NavLink>
+            </li>   
+            <li className="nav-item">
+              <NavLink className="nav-link" to="customers/create">Create a Customer</NavLink>
+            </li>  
+            <li className="nav-item">
+              <NavLink className="nav-link" to="salespeople">Salespeople</NavLink>
+            </li> 
+            <li className="nav-item">
+              <NavLink className="nav-link" to="salespeople/create">Synthesize a Salesperson</NavLink>
+            </li> 
           </ul>
         </div>
       </div>
