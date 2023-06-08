@@ -9,7 +9,7 @@ def api_salespeople(request):
     if request.method == "GET":
         salesperson = Salesperson.objects.all()
         return JsonResponse(
-                {"salesperson": salesperson},
+                {"salespeople": salesperson},
                 encoder=SalespeopleEncoder,
                 safe=False,
             )
@@ -139,10 +139,8 @@ def api_sales(request):
         except Customer.DoesNotExist:
             response = JsonResponse({"message": "The customer's last name doesn't exist."})
             return response
-
         sales = Sale.objects.create(**content)
-        automobile.sold = True
-        automobile.save()
+
         return JsonResponse(
             sales,
             encoder=SaleEncoder,
