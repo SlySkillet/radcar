@@ -7,9 +7,9 @@ from .encoders import CustomerEncoder, SalespeopleEncoder, SaleEncoder
 @require_http_methods(["GET", "POST"])
 def api_salespeople(request):
     if request.method == "GET":
-        salesperson = Salesperson.objects.all()
+        salespeople = Salesperson.objects.all()
         return JsonResponse(
-                {"salespeople": salesperson},
+                {"salespeople": salespeople},
                 encoder=SalespeopleEncoder,
                 safe=False,
             )

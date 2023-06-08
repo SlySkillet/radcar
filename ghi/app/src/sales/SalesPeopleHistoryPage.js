@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function SalespersonHistory() {
     const [salespeople, setSalespeople] = useState([]);
-    const [selectedSalesperson, setSelectedSalesperson] = useState('');
+    const [selectedSalesperson, setSalespersonId] = useState('');
     const [sales, setSales] = useState([]);
 
     useEffect(() => {
@@ -11,7 +11,7 @@ function SalespersonHistory() {
                 const response = await fetch('http://localhost:8090/api/salespeople/');
                 if (response.ok) {
                     const data = await response.json();
-                    setSalespeople(data.salesperson);
+                    setSalespeople(data.salespeople);
                 }
             } catch (error) {
                 console.error('Error fetching salespeople:', error);
@@ -38,18 +38,17 @@ function SalespersonHistory() {
     }, []);
 
     const handleSalespersonChange = (event) => {
-        const selectedSalespersonId = event.target.value;
-        setSelectedSalesperson(selectedSalespersonId);
+        const salespersonId = event.target.value;
+        setSalespersonId(salespersonId);
     };
 
     const filteredSales = sales.filter((sale) => sale.salesperson.id === parseInt(selectedSalesperson));
 
     return (
-        <div>
-            <h2>Salesperson History</h2>
-            <div>
-                <label htmlFor="salesperson">Select a salesperson:</label>
-                <select id="salesperson" value={selectedSalesperson} onChange={handleSalespersonChange}>
+        <div className="table-responsive">
+            <h2 className="text-center">Salesperson History</h2>
+            <div className="dropdown" align="center">
+                <select className="btn btn-success dropdown-toggle" id="salesperson" value={selectedSalesperson} onChange={handleSalespersonChange}>
                     <option value="">Choose a salesperson</option>
                     {salespeople.map((salesperson) => (
                         <option key={salesperson.id} value={salesperson.id}>
@@ -64,7 +63,7 @@ function SalespersonHistory() {
                     {filteredSales.length === 0 ? (
                         <p>No sales found</p>
                     ) : (
-                        <table>
+                        <table className="table-fill table table-shadow table-striped">
                             <thead>
                                 <tr>
                                     <th>Salesperson</th>
