@@ -21,14 +21,25 @@ function ServiceHistory(props){
         setFilterVin(value)
     }
 
+    const submitBtn = document.getElementById("submit-btn")
+    const refreshBtn = document.getElementById("refresh-btn")
+
     const filterAppointments = async (event) => {
-        event.preventDefault();
+        if (filterVin.length === 17) {
+            event.preventDefault();
 
+            const filteredData = appointments.filter(appointment => appointment.vin === filterVin)
 
-        const filteredData = appointments.filter(appointment => appointment.vin === filterVin)
-        console.log(filteredData)
+            console.log(filteredData)
 
-        setAppointments(filteredData)
+            setAppointments(filteredData)
+            submitBtn.classList.add("d-none")
+            refreshBtn.classList.remove("d-none")
+        }
+    }
+
+    const refreshForm = async (event) => {
+        window.location.reload()
     }
 
     return(
@@ -37,8 +48,9 @@ function ServiceHistory(props){
             <h1 className="display-5 fw-bold">Service History</h1>
             <form onSubmit={filterAppointments} className="form-inline">
                 <input value={filterVin} onChange={handleFilterVinChange} placeholder="search by automobile vin" required type="text" name="vin" className="form-control mb-2 mr-sm-2" id="inlineFormInputName2"/>
-                <button type="submit" className="btn btn-light">search</button>
+                <button type="submit" className="btn btn-light" id="submit-btn">search</button>
             </form>
+            <button onClick={refreshForm} className="btn btn-light d-none" id="refresh-btn">refresh search</button>
             <table className="table table-striped">
                 <thead>
                     <tr>
