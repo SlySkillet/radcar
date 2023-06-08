@@ -21,6 +21,12 @@ function ServiceHistory(props){
         setFilterVin(value)
     }
 
+    function vipYesNo(bool){
+        if (bool === true){
+            return 'Yes'
+        } else { return 'No'}
+    }
+
     const submitBtn = document.getElementById("submit-btn")
     const refreshBtn = document.getElementById("refresh-btn")
 
@@ -57,7 +63,8 @@ function ServiceHistory(props){
                         <th>VIN</th>
                         <th>Is VIP?</th>
                         <th>Customer</th>
-                        <th>Date - Time</th>
+                        <th>Date</th>
+                        <th>Time</th>
                         <th>Technician</th>
                         <th>Reason</th>
                         <th>Status</th>
@@ -68,9 +75,10 @@ function ServiceHistory(props){
                         return (
                             <tr key={appointment.id}>
                                 <td>{appointment.vin}</td>
-                                <td></td>
+                                <td>{vipYesNo(appointment.vip)}</td>
                                 <td>{appointment.customer}</td>
-                                <td>{appointment.date_time}</td>
+                                <td>{appointment.date_time.slice(0,10)}</td>
+                                <td>{appointment.date_time.slice(11,16)}</td>
                                 <td>{appointment.technician.first_name} {appointment.technician.last_name}</td>
                                 <td>{appointment.reason}</td>
                                 <td>{appointment.status}</td>

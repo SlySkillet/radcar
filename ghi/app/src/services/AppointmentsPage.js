@@ -9,11 +9,18 @@ function AppointmentsPage(props){
             if (response.ok){
                 const data = await response.json();
                 const displayData = data.appointments.filter((appointment) => appointment.status === "scheduled")
+                console.log("data ==>", displayData)
                 setAppointments(displayData)
             }
         }
         loadAppointments();
     }, [])
+
+    function vipYesNo(bool){
+        if (bool === true){
+            return 'Yes'
+        } else { return 'No'}
+    }
 
     const handleCancel = async (id, event) => {
         const cancelUrl = `http://localhost:8080/api/appointments/${id}/cancel`
@@ -58,7 +65,9 @@ function AppointmentsPage(props){
                     <tr>
                         <th>Automobile VIN</th>
                         <th>Customer</th>
+                        <th>is VIP?</th>
                         <th>Date</th>
+                        <th>Time</th>
                         <th>Technician</th>
                         <th>Reason</th>
                         <th></th>
@@ -71,7 +80,9 @@ function AppointmentsPage(props){
                             <tr key={appointment.id}>
                                 <td>{appointment.vin}</td>
                                 <td>{appointment.customer}</td>
-                                <td>{new Date(appointment.date_time).toLocaleString()}</td>
+                                <td>{vipYesNo(appointment.vip)}</td>
+                                <td>{appointment.date_time.slice(0,10)}</td>
+                                <td>{appointment.date_time.slice(11,16)}</td>
                                 <td>{appointment.technician.first_name} {appointment.technician.last_name}</td>
                                 <td>{appointment.reason}</td>
                                 <td>
