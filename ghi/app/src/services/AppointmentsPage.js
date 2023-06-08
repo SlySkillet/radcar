@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-// import { NavLink } from 'react-router-dom'
+
 
 function AppointmentsPage(props){
     const [appointments, setAppointments] = useState([])
@@ -9,7 +9,6 @@ function AppointmentsPage(props){
             if (response.ok){
                 const data = await response.json();
                 const displayData = data.appointments.filter((appointment) => appointment.status === "scheduled")
-                console.log("data ==>", displayData)
                 setAppointments(displayData)
             }
         }
@@ -30,18 +29,11 @@ function AppointmentsPage(props){
         const response = await fetch(cancelUrl, fetchConfig);
         if (response.ok) {
             const updateStatus = await response.json();
-            console.log(updateStatus);
             window.location.reload()
-        //     console.log("appointments =>", appointments)
-
-        //     const updatedData = appointments.filter((appointment) => appointment.status === "scheduled");
-        //     console.log("updatedData =>", updatedData)
-        //     setAppointments(updatedData);
         }
     }
 
     const handleFinish = async (id, event) => {
-        console.log("id ==>", id)
         const finishUrl = `http://localhost:8080/api/appointments/${id}/finish`
         const fetchConfig = {
             method: "put",
@@ -51,10 +43,8 @@ function AppointmentsPage(props){
         };
         const response = await fetch(finishUrl, fetchConfig);
         const updateStatus = await response.json();
-        console.log(updateStatus);
+
         window.location.reload();
-        // const updatedData = appointments.filter((appointment) => appointment.status === "scheduled");
-        // setAppointments(updatedData);
     }
 
     return(
