@@ -27,9 +27,9 @@ function AutomobilesPage(props){
         } return "No"
     }
     return(
-        <div className="px-4 py-5 my-5 text-center">
+        <div className="table responsive px-4 py-5 my-5 text-center">
         <h1 className="display-5 fw-bold">Automobiles</h1>
-        <table className="table table-striped">
+        <table className="table-fill table table-shadow table-striped">
             <thead>
                 <tr>
                     <th>VIN</th>
