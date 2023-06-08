@@ -36,6 +36,7 @@ class AppointmentListEncoder(ModelEncoder):
         "customer",
         "technician",
         "id",
+        "vip",
     ]
     encoders = {
         "technician": TechniciansListEncoder(),
@@ -79,6 +80,12 @@ def list_appointments(request):
     elif request.method == "POST":
         try:
             content = json.loads(request.body)
+
+
+            for automobile in AutomobileVO.objects.filter(sold=True):
+                if automobile.vin == content["vin"]:
+                    vip = True
+                    content["vip"] = vip
 
             technician_id = content["technician"]
             technician = Technician.objects.get(id=technician_id)
