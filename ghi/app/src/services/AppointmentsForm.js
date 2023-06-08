@@ -17,7 +17,6 @@ function AppointmentsForm(props){
         const response = await fetch(techniciansUrl);
         if (response.ok){
             const data = await response.json();
-            console.log(data.technicians)
             setTechnicians(data.technicians)
         }
     }
@@ -57,9 +56,11 @@ function AppointmentsForm(props){
 
         const data = {}
 
+        const dateTime = new Date(date + 'T' + time + 'z')
+
         data.vin = vin
         data.customer = customer
-        data.date_time = date + 'T' + time
+        data.date_time = dateTime
         data.reason = reason
         data.technician = technician
         data.status = "scheduled"
