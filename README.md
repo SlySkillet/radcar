@@ -13,6 +13,7 @@ Team:
 
 Explain your models and integration with the inventory
 microservice, here.
+This is a test
 
 ## Sales microservice
 
