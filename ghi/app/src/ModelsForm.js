@@ -53,8 +53,6 @@ function ModelsForm() {
         }
         const response = await fetch(modelsUrl, fetchConfig)
         if (response.ok) {
-            const newModel = await response.json()
-            console.log(newModel)
 
             setManufacturer('')
             setName('')

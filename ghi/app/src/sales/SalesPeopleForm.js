@@ -28,7 +28,6 @@ function AutomobilesForm() {
         data.first_name = firstName
         data.last_name = lastName
         data.employee_id = employeeId
-        console.log(data)
 
         const url = "http://localhost:8090/api/salespeople/"
         const fetchConfig = {
@@ -40,8 +39,6 @@ function AutomobilesForm() {
         }
         const response = await fetch(url, fetchConfig)
         if (response.ok) {
-            const newSalesperson = await response.json()
-            console.log(newSalesperson)
 
             setFirstName('')
             setLastName('')

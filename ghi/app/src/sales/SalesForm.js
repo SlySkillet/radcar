@@ -77,8 +77,7 @@ function SalesForm() {
         }
         const response = await fetch(salesUrl, fetchConfig)
         if (response.ok) {
-            const newSale = await response.json()
-            console.log(newSale)
+
             const autoUrl = `http://localhost:8100/api/automobiles/${automobile}/`
             const autoData = {sold: true}
             const FetchOptions = {

@@ -47,10 +47,10 @@ function SalespersonHistory() {
     
 
     return (
-        <div className="table-responsive">
-            <h2 className="text-center">Salesperson History</h2>
+        <div className="px-4 py-5 my-5 text-center">
+            <h2 className="display-5 fw-bold text-center">Salesperson History</h2>
             <div className="dropdown" align="center">
-                <select className="btn btn-success dropdown-toggle" id="salesperson" value={selectedSalesperson} onChange={handleSalespersonChange}>
+                <select className="btn btn-success dropdown-toggle px-1 py-2 my-5" id="salesperson" value={selectedSalesperson} onChange={handleSalespersonChange}>
                     <option value="">Choose a salesperson</option>
                     {salespeople.map((salesperson) => (
                         <option key={salesperson.id} value={salesperson.id}>
@@ -63,9 +63,9 @@ function SalespersonHistory() {
                 <div>
                     <h3>Sales History</h3>
                     {filteredSales.length === 0 ? (
-                        <p>No sales found</p>
+                        <p className="px-4 py-5 my-5 text-center">No sales found</p>
                     ) : (
-                        <table className="table-fill table table-shadow table-striped">
+                        <table className="table responsive px-4 py-5 my-5 text-center">
                             <thead>
                                 <tr>
                                     <th>Salesperson</th>

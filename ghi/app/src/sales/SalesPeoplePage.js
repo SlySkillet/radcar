@@ -10,7 +10,7 @@ function SalespeoplePage() {
 
             if (response.ok) {
                 const data = await response.json();
-                setSalespeople(data);
+                setSalespeople(data.salespeople);
             }
 
         };
@@ -19,8 +19,8 @@ function SalespeoplePage() {
     }, []);
 
     return (
-        <div className="table-responsive">
-            <h2 className="text-center">Salespeople</h2>
+        <div className="table-responsive px-4 py-5 my-5 text-center">
+            <h2 className="display-5 fw-bold text-center">Salespeople</h2>
                 <table className="table-fill table table-shadow table-striped">
                     <thead>
                         <tr>

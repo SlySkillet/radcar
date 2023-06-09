@@ -1,10 +1,7 @@
 from django.contrib import admin
-
-from django.contrib import admin
 from .models import Sale, AutomobileVO
 
 
-# Register your models here.
 @admin.register(Sale)
 class SaleAdmin(admin.ModelAdmin):
     pass
@@ -13,4 +10,3 @@ class SaleAdmin(admin.ModelAdmin):
 @admin.register(AutomobileVO)
 class AutomobileVOAdmin(admin.ModelAdmin):
     list_display = ["id"]
-

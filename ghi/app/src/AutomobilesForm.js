@@ -59,8 +59,6 @@ function AutomobilesForm() {
         }
         const response = await fetch(automobilesUrl, fetchConfig)
         if (response.ok) {
-            const newModel = await response.json()
-            console.log(newModel)
 
             setColor('')
             setYear('')

@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-// import { NavLink } from 'react-router-dom'
 
 
 function AutomobilesPage(props){
@@ -9,15 +8,12 @@ function AutomobilesPage(props){
             const response = await fetch('http://localhost:8100/api/automobiles/');
             if (response.ok){
                 const data = await response.json();
-                // console.log("data ==>", data)
                 setAutomobiles(data.autos)
-                // console.log("automobiles ==>", automobiles)
             } else {
                 console.error(response)
             }
         }
         loadAutomobiles()
-        // console.log("automobiles 2nd call ==>", automobiles)
     }, [])
 
     function soldOrNot(vin) {

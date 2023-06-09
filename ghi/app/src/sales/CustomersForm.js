@@ -35,7 +35,6 @@ function CustomersForm() {
         data.last_name = lastName
         data.phone_number = phoneNumber
         data.address = address
-        console.log(data)
 
         const url = "http://localhost:8090/api/customers/"
         const fetchConfig = {
@@ -47,8 +46,6 @@ function CustomersForm() {
         }
         const response = await fetch(url, fetchConfig)
         if (response.ok) {
-            const newCustomer = await response.json()
-            console.log(newCustomer)
 
             setFirstName('')
             setLastName('')

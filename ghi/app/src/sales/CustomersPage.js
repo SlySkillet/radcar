@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
 function CustomersPage() {
-    const [customers, setCustomers] = useState([]);
+    const [customers, setCustomers] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
-            const url = 'http://localhost:8090/api/customers/';
-            const response = await fetch(url);
+            const url = 'http://localhost:8090/api/customers/'
+            const response = await fetch(url)
 
             if (response.ok) {
-                const data = await response.json();
-                setCustomers(data);
+                const data = await response.json()
+                setCustomers(data.customers)
             }
 
-        };
+        }
 
         fetchData();
-    }, []);
+    }, [])
 
     return (
-        <div className="table-responsive">
-            <h2 className="text-center">Customers</h2>
+        <div className="table responsive px-4 py-5 my-5 text-center">
+            <h2 className="display-5 fw-bold text-center">Customers</h2>
                 <table className="table-fill table table-shadow table-striped">
                     <thead>
                         <tr>
@@ -39,7 +39,7 @@ function CustomersPage() {
                                     <td className="text-left w-25">{customer.phone_number}</td>
                                     <td className="text-left w-25">{customer.address}</td> 
                                 </tr>
-                            );
+                            )
                         })}
                     </tbody>
                 </table>

@@ -46,13 +46,19 @@ def api_salesperson(request, id):
                 status=404,
             )
     if request.method == "DELETE":
-        salesperson = Salesperson.objects.get(id=id)
-        salesperson.delete()
-        return JsonResponse(
-            salesperson,
-            encoder=SalespeopleEncoder,
-            safe=False,
-        )
+        try:
+            salesperson = Salesperson.objects.get(id=id)
+            salesperson.delete()
+            return JsonResponse(
+                {"message": "The salesperson was deleted."},
+                status=200
+                )
+        except Salesperson.DoesNotExist:
+            response = JsonResponse(
+                {"message": "The salesperson doesn't exist"}
+            )
+            response.status_code = 404
+            return response
 
 
 @require_http_methods(["GET", "POST"])
@@ -96,13 +102,20 @@ def api_customer(request, id):
             status=404,
         )
     if request.method == "DELETE":
-        customer = Customer.objects.get(id=id)
-        customer.delete()
-        return JsonResponse(
-            customer,
-            encoder=CustomerEncoder,
-            safe=False,
-        )
+        try:
+            customer = Customer.objects.get(id=id)
+            customer.delete()
+            return JsonResponse(
+                {"message": "The customer was deleted."},
+                status=200
+                )
+        except Customer.DoesNotExist:
+            response = JsonResponse(
+                {"message": "The customer doesn't exist"}
+            )
+            response.status_code = 404
+            return response
+
 
 @require_http_methods(["GET", "POST"])
 def api_sales(request):
@@ -138,6 +151,7 @@ def api_sales(request):
             content["customer"] = customer
         except Customer.DoesNotExist:
             response = JsonResponse({"message": "The customer's last name doesn't exist."})
+            response.status_code = 400
             return response
         sales = Sale.objects.create(**content)
 
@@ -165,11 +179,16 @@ def api_sale(request, id):
                 status=404,
             )
     if request.method == "DELETE":
-        record = Sale.objects.get(id=id)
-        record.delete()
-
-        return JsonResponse(
-            record,
-            encoder=SaleEncoder,
-            safe=False,
-        )
+        try:
+            record = Sale.objects.get(id=id)
+            record.delete()
+            return JsonResponse(
+                {"message": "The sale was deleted."},
+                status=200
+                )
+        except Sale.DoesNotExist:
+            response = JsonResponse(
+                {"message": "The sale doesn't exist"}
+            )
+            response.status_code = 404
+            return response

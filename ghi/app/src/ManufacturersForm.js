@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { NavLink } from 'react-router-dom';
+
 
 
 
@@ -17,8 +17,6 @@ function ManufacturersForm(props){
 
         data.name = manufacturer;
 
-        console.log(data);
-
         const manufacturerUrl = "http://localhost:8100/api/manufacturers/";
         const fetchConfig = {
             method: "post",
@@ -29,8 +27,6 @@ function ManufacturersForm(props){
         };
         const response = await fetch(manufacturerUrl, fetchConfig);
         if (response.ok){
-            const newManufacturer = await response.json();
-            console.log(newManufacturer);
 
             setManufacturer('');
         }
