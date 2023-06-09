@@ -8,8 +8,8 @@ function AppointmentsPage(props){
             const response = await fetch ('http://localhost:8080/api/appointments/');
             if (response.ok){
                 const data = await response.json();
-                const displayData = data.appointments.filter((appointment) => appointment.status === "scheduled")
-                setAppointments(displayData)
+                const displayData = data.appointments.filter((appointment) => appointment.status === "scheduled");
+                setAppointments(displayData);
             }
         }
         loadAppointments();
@@ -17,24 +17,23 @@ function AppointmentsPage(props){
 
     function vipYesNo(bool){
         if (bool === true){
-            return 'Yes'
+            return 'Yes';
         } else { return 'No'}
     }
 
     const handleCancel = async (id, event) => {
-        const cancelUrl = `http://localhost:8080/api/appointments/${id}/cancel`
+        const cancelUrl = `http://localhost:8080/api/appointments/${id}/cancel`;
         const fetchConfig = {
             method: "put",
         };
         const response = await fetch(cancelUrl, fetchConfig);
         if (response.ok) {
-            const updateStatus = await response.json();
-            window.location.reload()
-        }
+            window.location.reload();
+        };
     }
 
     const handleFinish = async (id, event) => {
-        const finishUrl = `http://localhost:8080/api/appointments/${id}/finish`
+        const finishUrl = `http://localhost:8080/api/appointments/${id}/finish`;
         const fetchConfig = {
             method: "put",
             headers: {
@@ -42,9 +41,9 @@ function AppointmentsPage(props){
             },
         };
         const response = await fetch(finishUrl, fetchConfig);
-        const updateStatus = await response.json();
-
-        window.location.reload();
+        if (response.ok) {
+            window.location.reload();
+        }
     }
 
     return(

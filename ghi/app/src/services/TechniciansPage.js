@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-// import { NavLink } from 'react-router-dom'
+
 
 function TechniciansPage(props){
     const [technicians, setTechnicians] = useState([])
@@ -8,12 +8,10 @@ function TechniciansPage(props){
             const response = await fetch ('http://localhost:8080/api/technicians/');
             if (response.ok){
                 const data = await response.json();
-                console.log(data)
                 setTechnicians(data.technicians)
             }
         }
         loadTechnicians();
-        console.log(technicians)
     }, [])
     return(
         <div className="px-4 py-5 my-5 text-center">

@@ -14,7 +14,6 @@ import SalesPeopleForm from './sales/SalesPeopleForm'
 import CustomersPage from './sales/CustomersPage'
 import CustomersForm from './sales/CustomersForm'
 import SalesPeopleHistoryPage from './sales/SalesPeopleHistoryPage'
-
 import TechniciansPage from './services/TechniciansPage';
 import TechniciansForm from './services/TechnicansForm';
 import AppointmentsPage from './services/AppointmentsPage';

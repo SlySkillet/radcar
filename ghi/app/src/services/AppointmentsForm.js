@@ -74,15 +74,14 @@ function AppointmentsForm(props){
         };
 
         const response = await fetch(appointmentUrl, fetchConfig);
-            const newAppointment = await response.json();
-            console.log(newAppointment);
-
+        if (response.ok) {
             setVin('')
             setCustomer('')
             setDate('')
             setTime('')
             setReason('')
             setTechnician('')
+        }
     }
 
     useEffect(() => {
