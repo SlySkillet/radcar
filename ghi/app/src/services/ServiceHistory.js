@@ -1,21 +1,21 @@
 import React, {useState, useEffect} from 'react'
-// import { NavLink } from 'react-router-dom'
 
 
 function ServiceHistory(props){
     const [appointments, setAppointments] = useState([]);
-    const [ filterVin, setFilterVin] = useState('');
+    const [filterVin, setFilterVin] = useState('');
+
     useEffect(() => {
         async function loadAppointments() {
             const response = await fetch ("http://localhost:8080/api/appointments/")
             if (response.ok){
                 const data = await response.json();
-                console.log(data)
                 setAppointments(data.appointments)
             }
         }
         loadAppointments()
     }, [])
+
     const handleFilterVinChange = (event) => {
         const value = event.target.value;
         setFilterVin(value)
@@ -35,8 +35,6 @@ function ServiceHistory(props){
             event.preventDefault();
 
             const filteredData = appointments.filter(appointment => appointment.vin === filterVin)
-
-            console.log(filteredData)
 
             setAppointments(filteredData)
             submitBtn.classList.add("d-none")

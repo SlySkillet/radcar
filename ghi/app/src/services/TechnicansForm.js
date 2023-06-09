@@ -1,21 +1,21 @@
 import React, {useState, useEffect} from 'react'
-// import { NavLink } from 'react-router-dom'
 
 
 function TechniciansForm(props){
     const [employeeId, setEmployeeId] = useState([]);
+    const[firstName, setFirstName] = useState([]);
+    const[lastName, setLastName] = useState([]);
+
     const handleEmployeeIdChange = (event) => {
         const value = event.target.value
         setEmployeeId(value)
     }
 
-    const[firstName, setFirstName] = useState([]);
     const handleFirstNameChange = (event) => {
         const value = event.target.value
         setFirstName(value)
     }
 
-    const[lastName, setLastName] = useState([]);
     const handleLastNameChange = (event) => {
         const value = event.target.value
         setLastName(value)
@@ -30,8 +30,6 @@ function TechniciansForm(props){
         data.first_name = firstName
         data.last_name = lastName
 
-        console.log(data)
-
         const technicianUrl = 'http://localhost:8080/api/technicians/'
         const fetchConfig = {
             method: "post",
@@ -40,13 +38,13 @@ function TechniciansForm(props){
                 'Content-Type': 'application/json'
             },
         };
-        const response = await fetch(technicianUrl, fetchConfig);
-            const newTechnician = await response.json();
-            console.log(newTechnician);
 
+        const response = await fetch(technicianUrl, fetchConfig);
+        if (response.ok) {
             setEmployeeId('')
             setFirstName('')
             setLastName('')
+        }
     }
     return(
         <div className="row">
