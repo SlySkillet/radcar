@@ -34,8 +34,8 @@ function CustomersPage() {
                         {customers.map(customer => {
                             return (
                                 <tr key={customer.id}>
-                                    <td className="text-left w-25">{customer.last_name}</td>
                                     <td className="text-left w-25">{customer.first_name}</td>
+                                    <td className="text-left w-25">{customer.last_name}</td>
                                     <td className="text-left w-25">{customer.phone_number}</td>
                                     <td className="text-left w-25">{customer.address}</td> 
                                 </tr>
