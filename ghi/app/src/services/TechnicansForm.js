@@ -40,6 +40,7 @@ function TechniciansForm(props){
                 'Content-Type': 'application/json'
             },
         };
+        console.log("fetchConfig:", fetchConfig)
         const response = await fetch(technicianUrl, fetchConfig);
             const newTechnician = await response.json();
             console.log(newTechnician);

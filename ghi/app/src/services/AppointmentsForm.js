@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-// import { NavLink } from 'react-router-dom'
 
 
 function AppointmentsForm(props){
@@ -73,6 +72,7 @@ function AppointmentsForm(props){
                 'Content-Type': 'application/json'
             },
         };
+
         const response = await fetch(appointmentUrl, fetchConfig);
             const newAppointment = await response.json();
             console.log(newAppointment);
