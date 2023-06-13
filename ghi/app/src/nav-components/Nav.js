@@ -1,24 +1,39 @@
 import { NavLink } from 'react-router-dom';
 import React, {useState} from 'react';
 import { navItems } from "./NavItems"
+import Dropdown from './Dropdown';
 
 
 function Nav() {
+  const [dropdown, setDropdown] = useState(false)
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-success">
-      <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/">CarCar</NavLink>
-        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          {navItems.map((item)=>{
-            return(
-              <li key={item.id} className="item.className">
-                <NavLink className="nav-link" aria-current="page" to={item.path}>{item.title}</NavLink>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-    </nav>
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+        <div className="container-fluid">
+          <NavLink className="navbar-brand" to="/">CarCar</NavLink>
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            {navItems.map((item)=>{
+              if (item.title === "Sales"){
+                return(
+                  <li key={item.id} className="item.className" onMouseEnter={()=> setDropdown(true)} onMouseLeave={()=> setDropdown(false)}>
+                    <NavLink className="nav-link" aria-current="page" to={item.path} >{item.title}</NavLink>
+                    {dropdown && <Dropdown />}
+                  </li>
+                )
+              }
+              return(
+                <li key={item.id} className="item.className">
+                  <NavLink className="nav-link" aria-current="page" to={item.path}>{item.title}</NavLink>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
+      </nav>
+
+
+    </div>
+
 
 
 
