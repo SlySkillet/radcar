@@ -9,7 +9,7 @@ export const navItems = [
         id: 2,
         title: "Sales",
         path: "sales/",
-        className: "nav-item",
+        className: "nav-link dropdown-toggle",
     },
     {
         id: 3,
