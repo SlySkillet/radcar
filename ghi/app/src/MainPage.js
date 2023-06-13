@@ -1,4 +1,21 @@
+import { useState, useEffect} from 'react';
+
+
 function MainPage() {
+  const [models, setModels] = useState([])
+  const fetchData = async () => {
+    const automobileUrl = "http://localhost:8100/api/models/"
+    const response = await fetch(automobileUrl)
+    if (response.ok) {
+      const data = await response.json()
+      console.log(data)
+      setModels(data.models)
+    }
+  }
+  useEffect(() => {
+    fetchData()
+  }, [])
+
   return (
     <div className="px-4 py-5 my-5 text-center">
       <h1 className="display-5 fw-bold">CarCar</h1>
