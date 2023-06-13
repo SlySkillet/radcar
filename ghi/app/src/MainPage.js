@@ -8,6 +8,19 @@ function MainPage() {
           management!
         </p>
       </div>
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://www.f150online.com/wp-content/uploads/2019/01/fe2-3.jpg" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="https://st.automobilemag.com/uploads/sites/10/2015/09/2013-Toyota-Tacoma-Baja-Edition-front-three-quarters-view-in-motion-01.jpg" class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg" class="d-block w-100" alt="..." />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
