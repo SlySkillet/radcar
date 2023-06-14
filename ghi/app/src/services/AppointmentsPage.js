@@ -28,7 +28,7 @@ function AppointmentsPage(props){
         };
         const response = await fetch(cancelUrl, fetchConfig);
         if (response.ok) {
-            window.location.reload();
+            setAppointments()
         };
     }
 
@@ -42,7 +42,7 @@ function AppointmentsPage(props){
         };
         const response = await fetch(finishUrl, fetchConfig);
         if (response.ok) {
-            window.location.reload();
+            setAppointments()
         }
     }
 
@@ -63,7 +63,7 @@ function AppointmentsPage(props){
                     </tr>
                 </thead>
                 <tbody>
-                    {appointments.map(appointment => {
+                    {appointments?.map(appointment => {
 
                         return(
                             <tr key={appointment.id}>
