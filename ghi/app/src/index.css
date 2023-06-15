@@ -13,21 +13,31 @@ code {
 }
 
 #bootstrap-overrides{
-  background-color: rgb(114, 70, 4);
+  background-color: rgb(60, 36, 1);
 }
 
 a.navbar-brand.active, a.nav-link.active.active{
   font-family: 'Gasoek One', sans-serif;
-  color: rgb(243, 210, 79);
+  color: rgb(255, 250, 155);
+  font-size: 50px;
 }
 
 button.btn.btn-secondary.dropdown-toggle {
   font-family: 'Gasoek One', sans-serif;
   border: none;
   background: none;
-  color: rgb(243, 210, 79);
+  color: rgb(255, 250, 155);
 }
 
 body {
-  background-color: rgb(247, 233, 206);
+  background-color: rgb(249, 224, 190);
+}
+
+h1.display-5.fw-bold {
+  font-family: 'Gasoek One', sans-serif;
+  font-size: 100px;
+}
+
+p.lead.mb-4 {
+  font-family: 'Gasoek One', sans-serif;
 }
