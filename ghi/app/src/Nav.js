@@ -1,12 +1,15 @@
 import { NavLink } from 'react-router-dom';
 import { FaBolt, FaBiohazard } from 'react-icons/fa'
+import React from 'react';
+import './index.css'
+
 
 function Nav() {
   return (
-    // bg-success p-2 text-dark bg-opacity-25
-    <nav className="navbar navbar-expand-lg navbar-dark bg-secondary" >
+    // className="navbar navbar-expand-lg navbar-dark bg-secondary"
+    <nav id="bootstrap-overrides"  className="navbar navbar-expand-lg">
       <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/">CarCar < FaBiohazard /></NavLink>
+        <NavLink className="navbar-brand" to="/">RadCar < FaBiohazard /></NavLink>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>

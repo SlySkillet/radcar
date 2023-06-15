@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-#bootstrap-overrides nav {
+#bootstrap-overrides{
   background-color: aquamarine;
   color:crimson
 }
