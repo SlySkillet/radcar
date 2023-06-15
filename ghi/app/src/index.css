@@ -16,3 +16,7 @@ code {
   background-color: aquamarine;
   color:crimson
 }
+
+a.navbar-brand.active, a.nav-link.active.active{
+  color: crimson;
+}
