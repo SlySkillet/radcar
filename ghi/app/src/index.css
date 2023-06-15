@@ -31,13 +31,18 @@ button.btn.btn-secondary.dropdown-toggle {
 
 body {
   background-color: rgb(249, 224, 190);
+  background-image: url("https://d.newsweek.com/en/full/2244798/grand-canyon.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 h1.display-5.fw-bold {
   font-family: 'Gasoek One', sans-serif;
   font-size: 100px;
+  color: black;
 }
 
 p.lead.mb-4 {
   font-family: 'Gasoek One', sans-serif;
+  color: black;
 }
