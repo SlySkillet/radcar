@@ -39,7 +39,8 @@ body {
 h1.display-5.fw-bold {
   font-family: 'Gasoek One', sans-serif;
   font-size: 100px;
-  color: black;
+  color: whitesmoke;
+  text-shadow: -4px 4px 4px black;
 }
 
 p.lead.mb-4 {
