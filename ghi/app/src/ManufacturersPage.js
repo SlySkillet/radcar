@@ -15,7 +15,7 @@ function ManufacturersPage(props){
     }, [])
     return (
         <div className="table responsive px-4 py-5 my-5 text-center">
-            <h1 className="display-5 fw-bold">Manufacturers</h1>
+            <h2 className="display-5 fw-bold">Manufacturers</h2>
             <table className="table-fill table table-shadow table-striped">
                 <thead>
                     <tr>
