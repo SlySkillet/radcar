@@ -30,10 +30,10 @@ function MainPage() {
             <img src="https://www.f150online.com/wp-content/uploads/2019/01/fe2-3.jpg" class="d-block w-100" alt="..." />
           </div>
           <div class="carousel-item">
-            <img src="https://st.automobilemag.com/uploads/sites/10/2015/09/2013-Toyota-Tacoma-Baja-Edition-front-three-quarters-view-in-motion-01.jpg" class="d-block w-100" alt="..." />
+            <img src="https://res.cloudinary.com/outdoorsy/image/upload/a_exif,q_auto,f_auto,w_auto,e_improve,w_1000,c_fill/v1584206903/p/rentals/159752/images/g5qedpaa3kksvrluz4ji.jpg" class="d-block w-100" alt="..." />
           </div>
           <div class="carousel-item">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Chrysler_Sebring_front_20090302.jpg/320px-Chrysler_Sebring_front_20090302.jpg" class="d-block w-100" alt="..." />
+            <img src="https://www.campervanlife.com/wp-content/uploads/2021/03/3396090548_36c4e0dc70_o-scaled.jpg" class="d-block w-100" alt="..." />
           </div>
         </div>
       </div>
