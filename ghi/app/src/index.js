@@ -4,6 +4,7 @@ import App from './App';
 import './css/index.css';
 import './css/table-pages.css';
 import './css/form-pages.css';
+import './css/footer.css'
 
 
 
