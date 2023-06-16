@@ -25,3 +25,9 @@ button#submit-btn, button#refresh-btn {
     color: white;
     font-weight: 800;
 }
+
+h2 {
+    font-family: 'Russo One', sans-serif;
+    color: white;
+    text-shadow: -4px 4px 4px black;
+}
