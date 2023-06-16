@@ -18,3 +18,10 @@ thead {
 th.text-left, th {
     color: white;
 }
+
+button#submit-btn, button#refresh-btn {
+    background-color: rgb(1, 130, 126);
+    border: 2px solid white;
+    color: white;
+    font-weight: 800;
+}
