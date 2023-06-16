@@ -15,9 +15,6 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            {/* <div>
-              <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
-            </div> */}
             <div className="dropdown">
               <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Sales
