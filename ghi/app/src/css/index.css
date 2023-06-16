@@ -32,3 +32,7 @@ p.lead.mb-4 {
   color: rgb(249, 248, 248);
   text-shadow: -4px 4px 4px black;
 }
+
+img.d-block.w-100 {
+  border: 1px solid rgb(255, 250, 155);
+}
