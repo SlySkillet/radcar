@@ -12,23 +12,7 @@ code {
     monospace;
 }
 
-#bootstrap-overrides{
-  background-color: rgb(60, 36, 1);
-}
-
-a.navbar-brand.active, a.nav-link.active.active{
-  font-family: 'Gasoek One', sans-serif;
-  color: rgb(255, 250, 155);
-  font-size: 50px;
-}
-
-button.btn.btn-secondary.dropdown-toggle {
-  font-family: 'Gasoek One', sans-serif;
-  border: none;
-  background: none;
-  color: rgb(255, 250, 155);
-}
-
+/* main page styles */
 body {
   background-color: rgb(249, 224, 190);
   background-image: url("https://d.newsweek.com/en/full/2244798/grand-canyon.jpg");
@@ -47,3 +31,12 @@ p.lead.mb-4 {
   font-family: 'Gasoek One', sans-serif;
   color: black;
 }
+
+/* dropdown styles */
+/* ul.dropdown-menu {
+  background-color: pink;
+} */
+
+/* ul.dropdown-menu:nth-child(even) {
+  background-color: rgb(253, 171, 185);
+} */

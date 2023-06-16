@@ -1,0 +1,16 @@
+nav.navbar.navbar-expand-lg {
+    background-color: rgb(60, 36, 1);
+}
+
+a.navbar-brand.active, a.navbar-brand, a.nav-link.active.active{
+    font-family: 'Gasoek One', sans-serif;
+    color: rgb(255, 250, 155);
+    font-size: 50px;
+  }
+
+button.btn.btn-secondary.dropdown-toggle {
+    font-family: 'Gasoek One', sans-serif;
+    border: none;
+    background: none;
+    color: rgb(255, 250, 155);
+    }
