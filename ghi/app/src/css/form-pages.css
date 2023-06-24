@@ -1,0 +1,18 @@
+.shadow.p-4.mt-4 {
+    background-color: whitesmoke;
+    border-radius: 8px;
+}
+
+h1{
+    font-family: 'Russo One', sans-serif;
+}
+
+button.btn.btn-primary {
+    background-color: rgb(1, 130, 126);
+    border: 2px solid white;
+    color: white;
+    font-weight: 900;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 0 38.25% 0 38.25%;
+}

@@ -1,0 +1,34 @@
+table.table-fill.table.table-shadow.table-striped, table.table.table-striped  {
+    background-color: white;
+    margin-top: 20px;
+}
+
+tr:hover{
+    background-color: rgb(235, 234, 234);
+}
+
+thead>tr{
+    pointer-events: none;
+}
+
+thead {
+    background-color: rgb(1, 130, 126);
+}
+
+th.text-left, th {
+    color: white;
+}
+
+button#submit-btn, button#refresh-btn {
+    background-color: rgb(1, 130, 126);
+    border: 2px solid white;
+    color: white;
+    font-weight: 800;
+
+}
+
+h2 {
+    font-family: 'Russo One', sans-serif;
+    color: white;
+    text-shadow: -4px 4px 4px black;
+}

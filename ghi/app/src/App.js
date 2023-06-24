@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
-import Nav from './nav-components/Nav';
+import Nav from './Nav';
+import Footer from './Footer'
 import ManufacturersPage from './ManufacturersPage';
 import ManufacturersForm from './ManufacturersForm';
 import ModelsPage from './ModelsPage'
@@ -47,6 +48,7 @@ function App() {
           <Route path="/appointments/history" element={<ServiceHistory/>} />
         </Routes>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 }

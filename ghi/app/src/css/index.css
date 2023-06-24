@@ -1,0 +1,48 @@
+div#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container{
+  flex: 1;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* main page styles */
+body {
+  background-color: rgb(249, 224, 190);
+  background-image: url("https://d.newsweek.com/en/full/2244798/grand-canyon.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+h1.display-5.fw-bold {
+  font-family: 'Gasoek One', sans-serif;
+  font-size: 100px;
+  color: white;
+  text-shadow: -4px 4px 4px black;
+}
+
+p.lead.mb-4 {
+  font-family: 'Gasoek One', sans-serif;
+  color: rgb(249, 248, 248);
+  text-shadow: -4px 4px 4px black;
+}
+
+img.d-block.w-100 {
+  border: 1px solid rgb(255, 250, 155);
+}

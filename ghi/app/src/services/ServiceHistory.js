@@ -49,7 +49,7 @@ function ServiceHistory(props){
     return(
 
         <div className="px-4 py-5 my-5 text-center">
-            <h1 className="display-5 fw-bold">Service History</h1>
+            <h2 className="display-5 fw-bold">Service History</h2>
             <form onSubmit={filterAppointments} className="form-inline">
                 <input value={filterVin} onChange={handleFilterVinChange} placeholder="search by automobile vin" required type="text" name="vin" className="form-control mb-2 mr-sm-2" id="inlineFormInputName2"/>
                 <button type="submit" className="btn btn-light" id="submit-btn">search</button>
