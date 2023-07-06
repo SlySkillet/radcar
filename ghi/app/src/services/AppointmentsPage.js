@@ -13,7 +13,7 @@ function AppointmentsPage(props){
             }
         }
         loadAppointments();
-    }, [])
+    }, [appointments])
 
     function vipYesNo(bool){
         if (bool === true){
@@ -76,7 +76,7 @@ function AppointmentsPage(props){
                                 <td>{appointment.reason}</td>
                                 <td>
                                     <button onClick={(event) => handleCancel(appointment.id, event)} className="btn btn-warning mx-3" >Cancel</button>
-                                    <button onClick={(event) => handleFinish(appointment.id, event)} className="btn btn-primary">Finish</button>
+                                    <button onClick={(event) => handleFinish(appointment.id, event)} className="btn btn-primary" id="finish">Finish</button>
                                 </td>
                             </tr>
                         )

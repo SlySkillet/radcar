@@ -19,6 +19,11 @@ th.text-left, th {
     color: white;
 }
 
+button#finish  {
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: 0;
+}
 button#submit-btn, button#refresh-btn {
     background-color: rgb(1, 130, 126);
     border: 2px solid white;
